@@ -7,7 +7,7 @@ server {
 	server_name singlesite.com;
 
 	# Path to document root
-	root /home/singlesite.com/public;
+	root /home/singlesite.com/public_html;
 
 	# File to be used as index
 	index index.php;

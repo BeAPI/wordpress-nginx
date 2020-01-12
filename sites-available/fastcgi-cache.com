@@ -12,7 +12,7 @@ server {
 	server_name fastcgi-cache.com;
 
 	# Path to document root
-	root /home/fastcgi-cache.com/public;
+	root /home/fastcgi-cache.com/public_html;
 
 	# File to be used as index
 	index index.php;

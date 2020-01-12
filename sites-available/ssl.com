@@ -7,7 +7,7 @@ server {
 	server_name ssl.com;
 
 	# Path to document root
-	root /home/ssl.com/public;
+	root /home/ssl.com/public_html;
 
 	# Paths to certificate files.
 	ssl_certificate /etc/letsencrypt/live/ssl.com/fullchain.pem;

@@ -12,7 +12,7 @@ server {
 	server_name ssl-fastcgi-cache.com;
 
 	# Path to document root
-	root /home/ssl-fastcgi-cache.com/public;
+	root /home/ssl-fastcgi-cache.com/public_html;
 
 	# Paths to certificate files.
 	ssl_certificate /etc/letsencrypt/live/ssl-fastcgi-cache.com/fullchain.pem;

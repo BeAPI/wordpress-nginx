@@ -7,7 +7,7 @@ server {
 	server_name multisite-subdirectory.com;
 
 	# Path to document root
-	root /home/multisite-subdirectory.com/public;
+	root /home/multisite-subdirectory.com/public_html;
 
 	# File to be used as index
 	index index.php;

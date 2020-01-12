@@ -7,14 +7,14 @@ server {
 	server_name multisite-subdirectory.com;
 
 	# Path to document root
-	root /sites/multisite-subdirectory.com/public;
+	root /home/multisite-subdirectory.com/public;
 
 	# File to be used as index
 	index index.php;
 
 	# Overrides logs defined in nginx.conf, allows per site logs.
-	access_log /sites/multisite-subdirectory.com/logs/access.log;
-	error_log /sites/multisite-subdirectory.com/logs/error.log;
+	access_log /home/multisite-subdirectory.com/logs/access.log;
+	error_log /home/multisite-subdirectory.com/logs/error.log;
 
 	# Default server block rules
 	include global/server/defaults.conf;

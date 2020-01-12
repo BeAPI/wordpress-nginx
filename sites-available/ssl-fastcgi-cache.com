@@ -1,7 +1,7 @@
 # Define path to cache and memory zone. The memory zone should be unique.
 # keys_zone=ssl-fastcgi-cache.com:100m creates the memory zone and sets the maximum size in MBs.
 # inactive=60m will remove cached items that haven't been accessed for 60 minutes or more.
-fastcgi_cache_path /sites/ssl-fastcgi-cache.com/cache levels=1:2 keys_zone=ssl-fastcgi-cache.com:100m inactive=60m;
+fastcgi_cache_path /home/ssl-fastcgi-cache.com/cache levels=1:2 keys_zone=ssl-fastcgi-cache.com:100m inactive=60m;
 
 server {
 	# Ports to listen on, uncomment one.
@@ -12,7 +12,7 @@ server {
 	server_name ssl-fastcgi-cache.com;
 
 	# Path to document root
-	root /sites/ssl-fastcgi-cache.com/public;
+	root /home/ssl-fastcgi-cache.com/public;
 
 	# Paths to certificate files.
 	ssl_certificate /etc/letsencrypt/live/ssl-fastcgi-cache.com/fullchain.pem;
@@ -22,8 +22,8 @@ server {
 	index index.php;
 
 	# Overrides logs defined in nginx.conf, allows per site logs.
-	access_log /sites/ssl-fastcgi-cache.com/logs/access.log;
-	error_log /sites/ssl-fastcgi-cache.com/logs/error.log;
+	access_log /home/ssl-fastcgi-cache.com/logs/access.log;
+	error_log /home/ssl-fastcgi-cache.com/logs/error.log;
 
 	# Default server block rules
 	include global/server/defaults.conf;

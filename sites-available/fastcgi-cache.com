@@ -4,15 +4,19 @@
 fastcgi_cache_path /home/fastcgi-cache.com/cache levels=1:2 keys_zone=fastcgi-cache.com:100m inactive=60m;
 
 server {
-	# Ports to listen on
-	listen 80;
-	listen [::]:80;
+	# Ports to listen on, uncomment one.
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
 
 	# Server name to listen for
 	server_name fastcgi-cache.com;
 
 	# Path to document root
 	root /home/fastcgi-cache.com/public_html;
+	
+	# Paths to certificate files.
+	ssl_certificate /etc/letsencrypt/live/fastcgi-cache.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/fastcgi-cache.com/privkey.pem;
 
 	# File to be used as index
 	index index.php;
@@ -23,6 +27,9 @@ server {
 
 	# Default server block rules
 	include global/server/defaults.conf;
+
+	# SSL rules
+	include global/server/ssl.conf;
 
 	# Fastcgi cache rules
 	include global/server/fastcgi-cache.conf;
@@ -59,11 +66,20 @@ server {
 	# }
 }
 
-# Redirect www to non-www
+# Redirect http to https
 server {
 	listen 80;
 	listen [::]:80;
+	server_name fastcgi-cache.com www.fastcgi-cache.com;
+
+	return 301 https://fastcgi-cache.com$request_uri;
+}
+
+# Redirect www to non-www
+server {
+	listen 443;
+	listen [::]:443;
 	server_name www.fastcgi-cache.com;
 
-	return 301 $scheme://fastcgi-cache.com$request_uri;
+	return 301 https://fastcgi-cache.com$request_uri;
 }
